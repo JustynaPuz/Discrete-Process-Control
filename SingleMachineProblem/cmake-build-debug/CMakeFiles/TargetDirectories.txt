@@ -1,0 +1,3 @@
+C:/Users/Justyna/CLionProjects/SingleMachineProblem/cmake-build-debug/CMakeFiles/SingleMachineProblem.dir
+C:/Users/Justyna/CLionProjects/SingleMachineProblem/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Justyna/CLionProjects/SingleMachineProblem/cmake-build-debug/CMakeFiles/rebuild_cache.dir
