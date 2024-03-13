@@ -6,7 +6,7 @@
 			[
 				{
 					"build" : ".",
-					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.27"
@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "SingleMachineProblem::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-SingleMachineProblem-Debug-dd934166635e90a9d9b9.json",
+					"jsonFile" : "target-SingleMachineProblem-Debug-1c16987a3535e59cbcbe.json",
 					"name" : "SingleMachineProblem",
 					"projectIndex" : 0
 				}
@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/Justyna/CLionProjects/SingleMachineProblem/cmake-build-debug",
-		"source" : "C:/Users/Justyna/CLionProjects/SingleMachineProblem"
+		"build" : "/Users/marcelowczarek/Documents/studies/VI/SPD/project1/Discrete-Process-Control/SingleMachineProblem/cmake-build-debug",
+		"source" : "/Users/marcelowczarek/Documents/studies/VI/SPD/project1/Discrete-Process-Control/SingleMachineProblem"
 	},
 	"version" : 
 	{

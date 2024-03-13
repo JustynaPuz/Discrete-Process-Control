@@ -18,8 +18,9 @@ public:
        this->index = index;
    }
 
-   double getR() {return r_j;}
+    double getR() {return r_j;}
     double getQ() {return  q_j;}
+    double getP() {return p_j;}
     int getIndex() {return index;}
 
 

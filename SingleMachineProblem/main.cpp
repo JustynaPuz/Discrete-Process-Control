@@ -8,7 +8,7 @@
 
 
 Problem ReadFile() {
-    std::ifstream ReadFile("C:/Users/Justyna/Desktop/example.txt");
+    std::ifstream ReadFile("/Users/marcelowczarek/Documents/studies/VI/SPD/project1/Discrete-Process-Control/SCHRAGE1.DAT");
     if (ReadFile.is_open()) {
         int number = 0;
 
@@ -35,6 +35,7 @@ Problem ReadFile() {
         return problem;
 
     }else{
+        std::cout << "blad otworzenia pliku";
         return Problem();
     }
 }
@@ -42,7 +43,7 @@ Problem ReadFile() {
 int main() {
 
     Problem problem = ReadFile();
-    problem.generateAllPermutation();
+    problem.generatePermutation();
    /* problem.sortR();
     problem.sortQ();*/
     return 0;
