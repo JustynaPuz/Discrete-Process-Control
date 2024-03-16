@@ -19,19 +19,20 @@ void Problem::sortQ() {
     std::sort(tasks.begin(), tasks.end(), sortQKey);
 }
 
-double Problem::calculateTime(std::vector<Task> Tasks) {
-    double endOfProcessTime = 0, endOfTasksTime = 0, currentTime = 0;
+double Problem::calculateTime(std::vector<Task> permutation) {
+    double endOfProcessTime = 0, endOfTasksTime = 0;
 
-    for(int i=0; i<numberOfTasks; i++){
-        if (currentTime >= tasks[i].getR()) {
-            endOfTasksTime = currentTime + tasks[i].getP();
+    for(int i=0; i < numberOfTasks; i++){
+        if (endOfTasksTime >= permutation[i].getR()) {
+            endOfTasksTime += permutation[i].getP();
+
         }
         else {
-            endOfTasksTime = tasks[i].getR() + tasks[i].getP();
-
+            endOfTasksTime += permutation[i].getR() - endOfTasksTime + permutation[i].getP();
         }
-        if(endOfProcessTime < endOfTasksTime + tasks[i].getQ()){
-            endOfProcessTime = endOfTasksTime + tasks[i].getQ();
+
+        if(endOfProcessTime < endOfTasksTime + permutation[i].getQ()){
+            endOfProcessTime = endOfTasksTime + permutation[i].getQ();
         }
     }
     return endOfProcessTime;
@@ -39,7 +40,7 @@ double Problem::calculateTime(std::vector<Task> Tasks) {
 
 void Problem::generatePermutation() {
 
-    double currentTime = 0, bestTime = 0;
+    double currentTime = 0, bestTime = INT_MAX;
 
     std::vector<Task> bestPermutation;
     std::vector<int> indexes(tasks.size());
@@ -54,6 +55,7 @@ void Problem::generatePermutation() {
         }
         currentTime = calculateTime(currentPermutation);
         if (currentTime < bestTime){
+
             bestTime = currentTime;
             bestPermutation = currentPermutation;
         }

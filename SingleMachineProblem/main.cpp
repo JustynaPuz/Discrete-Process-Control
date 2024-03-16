@@ -8,10 +8,9 @@
 
 
 Problem ReadFile() {
-    std::ifstream ReadFile("/Users/marcelowczarek/Documents/studies/VI/SPD/project1/Discrete-Process-Control/SCHRAGE1.DAT");
+    std::ifstream ReadFile("C:\\Users\\Justyna\\Desktop\\Discrete-Process-Control\\SingleMachineProblem\\resources\\example.txt");
     if (ReadFile.is_open()) {
         int number = 0;
-
         std::string s = "";
 
         getline(ReadFile, s);
@@ -24,8 +23,8 @@ Problem ReadFile() {
             getline(ReadFile, s);
             std::istringstream iss(s);
             double p, r, q;
-            iss >> p;
             iss >> r;
+            iss >> p;
             iss >> q;
             Task task(p, r, q,i );
             tasks.push_back(task);
@@ -44,9 +43,10 @@ int main() {
 
     Problem problem = ReadFile();
     problem.generatePermutation();
-   /* problem.sortR();
-    problem.sortQ();*/
+    problem.sortR();
+    problem.generatePermutation();
+    problem.sortR();
+    problem.sortQ();
+
     return 0;
 }
-
-
