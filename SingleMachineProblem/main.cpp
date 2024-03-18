@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+#include <algorithm>
 #include "inc/Problem.h"
 #include "inc/Task.h"
 #include "inc/Solution.h"
@@ -15,7 +16,7 @@ Problem ReadFile() {
 
         getline(ReadFile, s);
         number = stoi(s);
-        std::cout << s << std::endl;
+      //  std::cout << s << std::endl;
         std::vector<Task> tasks;
         tasks.reserve(number);
         int i =0;
@@ -40,13 +41,12 @@ Problem ReadFile() {
 }
 
 int main() {
-
     Problem problem = ReadFile();
-    problem.generatePermutation();
-    problem.sortR();
-    problem.generatePermutation();
-    problem.sortR();
-    problem.sortQ();
-
+    //Solution completeReview = problem.generatePermutation();
+    //problem.generatePermutation();
+    //Solution  permutationSortR = problem.permutationSortR();
+    //Solution  permutationSortQ = problem.permutationSortQ();
+    Solution permutationSchrage = problem.schrage();
     return 0;
 }
+

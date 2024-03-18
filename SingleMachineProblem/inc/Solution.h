@@ -6,17 +6,20 @@
 #define SINGLEMACHINEPROBLEM_SOLUTION_H
 
 #include <vector>
+#include <string>
+#include "Task.h"
 
 class Solution {
-    double criterion;
-    std::vector<int> ranked;
+    std::string criterion;
+    std::vector<Task> ranked;
+    double timeOfBestPermutation;
 
-    Solution(double criterion, std::vector<int> ranked) {
+public:
+    Solution(std::string criterion, std::vector<Task> ranked, double timeOfBestPermutation) {
         this->criterion = criterion;
-        this->ranked= ranked;
-
+        this->ranked = ranked;
+        this->timeOfBestPermutation = timeOfBestPermutation;
     }
-
 };
 
 

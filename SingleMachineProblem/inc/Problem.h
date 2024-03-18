@@ -7,14 +7,14 @@
 
 #include <vector>
 #include "Task.h"
+#include "Solution.h"
 
 
 class Problem {
     int numberOfTasks =0;
     std::vector<Task> tasks;
     // std::vector<std::vector<Task>> allPermutation;
-    std::vector<Task> bestPermutation;
-    double timeOfBestPermutation;
+
 
 public:
 
@@ -25,10 +25,11 @@ public:
     }
 
     Problem() = default;
-    void sortR();
-    void sortQ();
-    void generatePermutation();
+    Solution generatePermutation();
     double calculateTime(std::vector<Task>);
+    Solution permutationSortR();
+    Solution permutationSortQ();
+    Solution schrage();
 
 };
 
