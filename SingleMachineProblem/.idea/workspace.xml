@@ -24,10 +24,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/SingleMachineProblem.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/SingleMachineProblem.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inc/Problem.h" beforeDir="false" afterPath="$PROJECT_DIR$/inc/Problem.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inc/Solution.h" beforeDir="false" afterPath="$PROJECT_DIR$/inc/Solution.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inc/Task.h" beforeDir="false" afterPath="$PROJECT_DIR$/inc/Task.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/example.txt" beforeDir="false" afterPath="$PROJECT_DIR$/resources/example.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Problem.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Problem.cpp" afterDir="false" />
     </list>
@@ -108,7 +104,8 @@
       <workItem from="1710342682846" duration="6728000" />
       <workItem from="1710413135374" duration="4981000" />
       <workItem from="1710585361828" duration="984000" />
-      <workItem from="1710789731250" duration="9846000" />
+      <workItem from="1710789731250" duration="10107000" />
+      <workItem from="1710845701275" duration="7791000" />
     </task>
     <servers />
   </component>
@@ -124,14 +121,14 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/main.cpp</url>
-          <line>48</line>
-          <option name="timeStamp" value="26" />
+          <url>file://$PROJECT_DIR$/src/Problem.cpp</url>
+          <line>140</line>
+          <option name="timeStamp" value="28" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/src/Problem.cpp</url>
-          <line>117</line>
-          <option name="timeStamp" value="28" />
+          <line>114</line>
+          <option name="timeStamp" value="32" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

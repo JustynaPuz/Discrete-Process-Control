@@ -4,6 +4,7 @@
 #include<algorithm>
 #include <queue>
 #include <iostream>
+#include <functional>
 
 bool sortRKey ( Task task1, Task task2 ){
     return (task1.getR() < task2.getR());
@@ -11,7 +12,6 @@ bool sortRKey ( Task task1, Task task2 ){
 bool sortQKey ( Task task1, Task task2 ){
     return (task1.getQ() < task2.getQ());
 }
-
 
 std::vector<Task> sortR(std::vector<Task> permutation) {
     std::sort(permutation.begin(), permutation.end(), sortRKey);
@@ -24,7 +24,7 @@ std::vector<Task> sortQ(std::vector<Task> permutation) {
 }
 
 struct compareQ {
-    bool operator()(const Task&  task1,const  Task& task2){
+    bool operator()( Task&  task1, Task& task2){
         return (task1.getQ() < task2.getQ());
     }
 };
@@ -98,39 +98,69 @@ Solution Problem::generatePermutation() {
     Solution solution("Complete review", bestPermutation, timeOfBestPermutation);
     return  solution;
 }
+void transferConditionally(std::priority_queue<Task, std::vector<Task>, compareQ>& tasksByQ, std::priority_queue<Task, std::vector<Task>, compareQ>& availableTasks, int time) {
+    std::vector<Task> temporary;
 
+    while(!tasksByQ.empty()){
+        Task task = tasksByQ.top();
+       tasksByQ.pop();
+       if( task.getR() <= time) {
+           availableTasks.push(task);
+       }else{
+           temporary.push_back(task);
+       }
+
+    }
+
+    for(Task task : temporary) {
+        tasksByQ.push(task);
+    }
+
+}
 Solution Problem::schrage() {
     std::vector<Task> permutation = this->tasks;
     std::priority_queue<Task, std::vector<Task>, compareQ>  tasksByQ ;
     std::priority_queue<Task, std::vector<Task>, compareQ>  availableTasks;
     std::vector<Task> bestPermutation;
+    permutation = sortR(permutation);
+    int time =0;
+
+    auto condition = [time](const Task& task) {return task.getR() <= time;};
 
     for(Task task : permutation){
         tasksByQ.push(task);
     }
-   /* for(int i =0; i < permutation.size(); i++) {
-        Task t = pq.top();
+/*
+   for(int i =0; i < permutation.size(); i++) {
+        Task t = tasksByQ.top();
         std::cout << t.getQ() << std::endl;
-        pq.pop();
+        tasksByQ.pop();
     }*/
 
-   int time =0;
+
    while(!tasksByQ.empty() || !availableTasks.empty()) {
-      while(!tasksByQ.empty() && tasksByQ.top().getR() <= time ) {
-          availableTasks.push(tasksByQ.top());
-          tasksByQ.pop();
+   //   while(!tasksByQ.empty() && tasksByQ.top().getR() <= time ) {
+       if(!tasksByQ.empty() && permutation[0].getR() <= time ) {
+           transferConditionally(tasksByQ, availableTasks, time);
+          // break;
+//          availableTasks.push(tasksByQ.top());
+//          tasksByQ.pop();
       }
 
       if(availableTasks.empty()) {
-          time = tasksByQ.top().getR();
+        //  time = tasksByQ.top().getR();
+        time = permutation[0].getR();
       } else {
           Task task = availableTasks.top();
           availableTasks.pop();
+          bestPermutation.push_back(task);
+          permutation.erase(std::remove_if(permutation.begin(), permutation.end(),[&task](Task x) {return x.getIndex() == task.getIndex();}),permutation.end());
 
           time += task.getP();
       }
        std::cout << "Time: " << time << std::endl;
    }
+   time = calculateTime(bestPermutation);
 
     std::cout << "Time: " << time << std::endl;
     Solution solution("Schrage", permutation, 0);
