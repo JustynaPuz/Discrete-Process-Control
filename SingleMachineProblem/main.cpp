@@ -9,7 +9,7 @@
 
 
 Problem ReadFile() {
-    std::ifstream ReadFile("C:\\Users\\Justyna\\Desktop\\Discrete-Process-Control\\SingleMachineProblem\\resources\\example.txt");
+    std::ifstream ReadFile("/Users/marcelowczarek/Documents/studies/VI/SPD/project1/Discrete-Process-Control/SCHRAGE3.DAT");
     if (ReadFile.is_open()) {
         int number = 0;
         std::string s = "";
@@ -47,6 +47,7 @@ int main() {
     //Solution  permutationSortR = problem.permutationSortR();
     //Solution  permutationSortQ = problem.permutationSortQ();
     Solution permutationSchrage = problem.schrage();
+    Solution permutationBetterSchrage = problem.betterSchrage();
     return 0;
 }
 

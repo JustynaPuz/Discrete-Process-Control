@@ -23,6 +23,7 @@ public:
     double getQ() {return  q_j;}
     double getQ() const {return  q_j;}
     double getP() {return p_j;}
+    void setP(double p) {this->p_j=p;}
     int getIndex() {return index;}
 
 

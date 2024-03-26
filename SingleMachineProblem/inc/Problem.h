@@ -30,6 +30,7 @@ public:
     Solution permutationSortR();
     Solution permutationSortQ();
     Solution schrage();
+    Solution betterSchrage();
 
 };
 
