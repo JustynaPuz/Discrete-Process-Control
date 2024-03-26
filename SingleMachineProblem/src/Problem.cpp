@@ -100,7 +100,8 @@ Solution Problem::generatePermutation() {
     return  solution;
 }
 
-void transferConditionally(std::priority_queue<Task, std::vector<Task>, compareQ>& tasksByQ, std::priority_queue<Task, std::vector<Task>, compareQ>& availableTasks, int time) {
+void transferConditionally(std::priority_queue<Task, std::vector<Task>, compareQ>& tasksByQ,
+                           std::priority_queue<Task, std::vector<Task>, compareQ>& availableTasks, int time) {
     std::vector<Task> temporary;
 
     while(!tasksByQ.empty()){
@@ -162,7 +163,8 @@ Solution Problem::betterSchrage() {
     std::priority_queue<Task, std::vector<Task>, compareQ>  availableTasks;
     std::vector<Task> bestPermutation;
     permutation = sortR(permutation);
-    int time =0;
+    int time = 0;
+    int endTime = 0;
 
     auto condition = [time](const Task& task) {return task.getR() <= time;};
 
@@ -171,23 +173,51 @@ Solution Problem::betterSchrage() {
     }
 
     while(!tasksByQ.empty() || !availableTasks.empty()) {
-        if(!tasksByQ.empty() && permutation[0].getR() <= time ) {
+        if (!tasksByQ.empty() && permutation[0].getR() <= time) {
             transferConditionally(tasksByQ, availableTasks, time);
+        }
+        if (availableTasks.empty()) {
+            time += permutation[0].getR();
+        } else {
             Task task = availableTasks.top();
-            //std::cout << permutation[0].getQ() << "<" << task.getQ() << std::endl;
-            if(task.getQ() > permutation[0].getQ()){
-                permutation[0].setP(time-task.getR());
-                availableTasks.pop();
-                availableTasks.push(task);
-                time = task.getR();
-            };
-            //std::cout << task.getP() << std::endl;
-            if(task.getP() > 0){
-                transferConditionally(tasksByQ,availableTasks,time);
-            }
-      }
+            availableTasks.pop();
+            time++;
+            task.setP(task.getP() - 1);
+            if (task.getP() > 0) {
+                transferConditionally(tasksByQ, availableTasks, time);
+                if (availableTasks.top().getQ() > task.getQ()) {
+                    availableTasks.push(task);
+                    task = availableTasks.top();
+                    availableTasks.pop();
+                }
 
-        if(availableTasks.empty()) {
+
+                /*//std::cout << permutation[0].getQ() << "<" << task.getQ() << std::endl;
+                if(task.getQ() > permutation[0].getQ()){
+                    permutation[0].setP(time-task.getR());
+                    availableTasks.pop();
+                    availableTasks.push(task);
+                    time = task.getR();
+                };
+                //std::cout << task.getP() << std::endl;
+                if(task.getP() > 0){
+                    transferConditionally(tasksByQ,availableTasks,time);
+                }*/
+            } else {
+                if(endTime < time + task.getQ()) {
+                    endTime = time + task.getQ();
+                }
+                bestPermutation.push_back(task);
+                task = availableTasks.top();
+                availableTasks.pop();
+            }
+            availableTasks.push(task);
+
+        }
+    }
+
+
+        /*if(availableTasks.empty()) {
         time = permutation[0].getR();
         } else {
             Task task = availableTasks.top();
@@ -196,13 +226,14 @@ Solution Problem::betterSchrage() {
             permutation.erase(std::remove_if(permutation.begin(), permutation.end(),[&task](Task x) {return x.getIndex() == task.getIndex();}),permutation.end());
 
             time += task.getP();
-        }
+        }*/
+    //time++;
 
-    }
+
     //std::cout << "t: " << time << std::endl;
-    //time = calculateTime(bestPermutation);
+    //time = calculateTime(bestPermutation)
 
-    std::cout << "Time: " << time << std::endl;
+    std::cout << "Time: " <<  time << " endTime: " << endTime<< std::endl;
     Solution solution("Schrage", permutation, calculateTime(bestPermutation));
     return  solution;
 }
