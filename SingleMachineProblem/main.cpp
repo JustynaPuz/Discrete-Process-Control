@@ -9,7 +9,7 @@
 
 
 Problem ReadFile() {
-    std::ifstream ReadFile("/Users/marcelowczarek/Documents/studies/VI/SPD/project1/Discrete-Process-Control/SCHRAGE3.DAT");
+    std::ifstream ReadFile("/Users/marcelowczarek/Documents/studies/VI/SPD/project1/Discrete-Process-Control/SCHRAGE3A.DAT");
     if (ReadFile.is_open()) {
         int number = 0;
         std::string s = "";
@@ -42,12 +42,22 @@ Problem ReadFile() {
 
 int main() {
     Problem problem = ReadFile();
-    //Solution completeReview = problem.generatePermutation();
-    //problem.generatePermutation();
-    //Solution  permutationSortR = problem.permutationSortR();
-    //Solution  permutationSortQ = problem.permutationSortQ();
+
+    Solution  permutationSortR = problem.permutationSortR();
+    std::cout << permutationSortR << std::endl;
+
+    Solution  permutationSortQ = problem.permutationSortQ();
+    std::cout << permutationSortQ << std::endl;
+
     Solution permutationSchrage = problem.schrage();
+    std::cout << permutationSchrage << std::endl;
+
     Solution permutationBetterSchrage = problem.betterSchrage();
+    std::cout << permutationBetterSchrage << std::endl;
+
+    Solution theBest = problem.puzAndOwczarekMethod();
+    std::cout << theBest << std::endl;
+
     return 0;
 }
 

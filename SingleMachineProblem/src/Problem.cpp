@@ -152,7 +152,6 @@ Solution Problem::schrage() {
    }
    time = calculateTime(bestPermutation);
 
-    std::cout << "Time: " << time << std::endl;
     Solution solution("Schrage", permutation, calculateTime(bestPermutation));
     return  solution;
 }
@@ -190,19 +189,6 @@ Solution Problem::betterSchrage() {
                     task = availableTasks.top();
                     availableTasks.pop();
                 }
-
-
-                /*//std::cout << permutation[0].getQ() << "<" << task.getQ() << std::endl;
-                if(task.getQ() > permutation[0].getQ()){
-                    permutation[0].setP(time-task.getR());
-                    availableTasks.pop();
-                    availableTasks.push(task);
-                    time = task.getR();
-                };
-                //std::cout << task.getP() << std::endl;
-                if(task.getP() > 0){
-                    transferConditionally(tasksByQ,availableTasks,time);
-                }*/
             } else {
                 if(endTime < time + task.getQ()) {
                     endTime = time + task.getQ();
@@ -215,25 +201,41 @@ Solution Problem::betterSchrage() {
 
         }
     }
-
-
-        /*if(availableTasks.empty()) {
-        time = permutation[0].getR();
-        } else {
-            Task task = availableTasks.top();
-            availableTasks.pop();
-            bestPermutation.push_back(task);
-            permutation.erase(std::remove_if(permutation.begin(), permutation.end(),[&task](Task x) {return x.getIndex() == task.getIndex();}),permutation.end());
-
-            time += task.getP();
-        }*/
-    //time++;
-
-
-    //std::cout << "t: " << time << std::endl;
-    //time = calculateTime(bestPermutation)
-
-    std::cout << "Time: " <<  time << " endTime: " << endTime<< std::endl;
-    Solution solution("Schrage", permutation, calculateTime(bestPermutation));
+    Solution solution("BetterSchrage", permutation, endTime);
     return  solution;
+}
+
+Solution Problem::puzAndOwczarekMethod() {
+    std::vector<Task> permutation = this->tasks;
+    std::vector<Task> bestPerm;
+    std::vector<Task> tmpPerm;
+    int time = 0;
+    int bestTime = 0;
+    int endTime = 0;
+
+    while(!permutation.empty()){
+
+        Task task = permutation.back();
+        tmpPerm.push_back(task);
+
+        for(int i = 0; i < tmpPerm.size() - 1; i++){
+
+            bestTime = calculateTime(tmpPerm);
+            bestPerm=tmpPerm;
+            if(tmpPerm.size() > 1){
+            std::swap(tmpPerm[tmpPerm.size() - 1 - i], tmpPerm[tmpPerm.size() - 2 - i]);}
+            time = calculateTime(tmpPerm);
+
+            if(bestTime < time){
+                bestPerm = tmpPerm;
+            }
+
+        }
+        permutation.pop_back();
+    }
+
+    time = calculateTime(bestPerm);
+
+    Solution solution("Algorytm walsny", bestPerm, time);
+    return solution;
 }

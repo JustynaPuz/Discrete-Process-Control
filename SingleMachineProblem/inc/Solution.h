@@ -7,6 +7,7 @@
 
 #include <vector>
 #include <string>
+#include <iostream>
 #include "Task.h"
 
 class Solution {
@@ -19,6 +20,19 @@ public:
         this->criterion = criterion;
         this->ranked = ranked;
         this->timeOfBestPermutation = timeOfBestPermutation;
+    }
+
+    friend std::ostream& operator<<(std::ostream& os, const Solution& solution) {
+        os << "Kryterium: " << solution.criterion << ", czas: " << solution.timeOfBestPermutation;
+        return os;
+    }
+
+     std::string getCriterium() {
+        return this->criterion;
+    }
+
+    double getTimeOfBestPermutation() {
+        return this->timeOfBestPermutation;
     }
 };
 

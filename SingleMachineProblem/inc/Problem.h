@@ -31,6 +31,7 @@ public:
     Solution permutationSortQ();
     Solution schrage();
     Solution betterSchrage();
+    Solution puzAndOwczarekMethod();
 
 };
 
