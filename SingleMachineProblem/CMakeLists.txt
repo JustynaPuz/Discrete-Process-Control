@@ -3,6 +3,8 @@ project(SingleMachineProblem_)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(SingleMachineProblem main.cpp src/Problem.cpp src/Task.cpp src/Solution.cpp resources/instance.txt)
+set(Headers inc/Problem.h inc/Solution.h inc/Task.h inc/TestAlgorithm.h)
+
+add_executable(SingleMachineProblem ${PROJECT_SOURCE_DIR}/ main.cpp src/Problem.cpp src/Solution.cpp src/Task.cpp src/TestTime.cpp)
 
 

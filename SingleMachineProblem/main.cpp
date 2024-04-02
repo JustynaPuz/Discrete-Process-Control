@@ -7,9 +7,8 @@
 #include "inc/Task.h"
 #include "inc/Solution.h"
 
-
 Problem ReadFile() {
-    std::ifstream ReadFile("/Users/marcelowczarek/Documents/studies/VI/SPD/project1/Discrete-Process-Control/SCHRAGE3A.DAT");
+    std::ifstream ReadFile("resources/instance.txt");
     if (ReadFile.is_open()) {
         int number = 0;
         std::string s = "";
@@ -42,10 +41,11 @@ Problem ReadFile() {
 
 int main() {
     Problem problem = ReadFile();
+    std::cout << "HEJ";
 
     Solution  permutationSortR = problem.permutationSortR();
     std::cout << permutationSortR << std::endl;
-
+/*
     Solution  permutationSortQ = problem.permutationSortQ();
     std::cout << permutationSortQ << std::endl;
 
@@ -57,7 +57,7 @@ int main() {
 
     Solution theBest = problem.puzAndOwczarekMethod();
     std::cout << theBest << std::endl;
-
+*/
     return 0;
 }
 
