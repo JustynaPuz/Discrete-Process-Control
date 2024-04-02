@@ -1,16 +1,16 @@
 //
-// Created by Justyna on 01.04.2024.
+// Created by Justyna on 02.04.2024.
 //
 
-#ifndef SINGLEMACHINEPROBLEM_TESTTIME_H
-#define SINGLEMACHINEPROBLEM_TESTTIME_H
+#ifndef SINGLE_TESTALGORITHM_H
+#define SINGLE_TESTALGORITHM_H
+
 #include "Problem.h"
 
-class TestTime {
-    Problem problem;
-    Solution  solution;
+class TestAlgorithm {
+
+public:
+    static void test( Problem problem);
 
 };
-
-
-#endif //SINGLEMACHINEPROBLEM_TESTTIME_H
+#endif //SINGLE_TESTALGORITHM_H

@@ -6,16 +6,17 @@
 #include "inc/Problem.h"
 #include "inc/Task.h"
 #include "inc/Solution.h"
+#include "inc/TestAlgorithm.h"
 
 Problem ReadFile() {
-    std::ifstream ReadFile("resources/instance.txt");
+    std::ifstream ReadFile("C:\\Users\\Justyna\\Desktop\\Discrete-Process-Control\\SingleMachineProblem\\resources\\example.txt");
     if (ReadFile.is_open()) {
         int number = 0;
         std::string s = "";
 
         getline(ReadFile, s);
         number = stoi(s);
-      //  std::cout << s << std::endl;
+        //  std::cout << s << std::endl;
         std::vector<Task> tasks;
         tasks.reserve(number);
         int i =0;
@@ -34,30 +35,30 @@ Problem ReadFile() {
         return problem;
 
     }else{
-        std::cout << "blad otworzenia pliku";
+        std::cout << "File error";
         return Problem();
     }
 }
 
 int main() {
     Problem problem = ReadFile();
-    std::cout << "HEJ";
 
     Solution  permutationSortR = problem.permutationSortR();
     std::cout << permutationSortR << std::endl;
-/*
+
     Solution  permutationSortQ = problem.permutationSortQ();
     std::cout << permutationSortQ << std::endl;
 
     Solution permutationSchrage = problem.schrage();
     std::cout << permutationSchrage << std::endl;
 
+    Solution theBest = problem.puzAndOwczarekMethod();
+    std::cout << theBest << std::endl;
+
     Solution permutationBetterSchrage = problem.betterSchrage();
     std::cout << permutationBetterSchrage << std::endl;
 
-    Solution theBest = problem.puzAndOwczarekMethod();
-    std::cout << theBest << std::endl;
-*/
+    TestAlgorithm::test(problem);
     return 0;
-}
 
+}

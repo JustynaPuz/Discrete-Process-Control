@@ -1,9 +1,9 @@
 //
-// Created by Justyna on 11.03.2024.
+// Created by Justyna on 02.04.2024.
 //
 
-#ifndef SINGLEMACHINEPROBLEM_SOLUTION_H
-#define SINGLEMACHINEPROBLEM_SOLUTION_H
+#ifndef SINGLE_SOLUTION_H
+#define SINGLE_SOLUTION_H
 
 #include <vector>
 #include <string>
@@ -27,7 +27,7 @@ public:
         return os;
     }
 
-     std::string getCriterium() {
+    std::string getCriterium() {
         return this->criterion;
     }
 
@@ -37,4 +37,4 @@ public:
 };
 
 
-#endif //SINGLEMACHINEPROBLEM_SOLUTION_H
+#endif //SINGLE_SOLUTION_H

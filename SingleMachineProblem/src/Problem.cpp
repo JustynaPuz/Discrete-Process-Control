@@ -1,6 +1,5 @@
 
 #include "../inc/Problem.h"
-#include "../inc/Solution.h"
 #include<algorithm>
 #include <queue>
 #include <iostream>
@@ -74,7 +73,6 @@ Solution Problem::permutationSortQ() {
 Solution Problem::generatePermutation() {
 
     double currentTime = 0, bestTime = INT_MAX;
-    double timeOfBestPermutation;
 
     std::vector<Task> bestPermutation;
     std::vector<int> indexes(tasks.size());
@@ -96,7 +94,7 @@ Solution Problem::generatePermutation() {
 
     }while(std::next_permutation(indexes.begin(), indexes.end()));
 
-    Solution solution("Complete review", bestPermutation, timeOfBestPermutation);
+    Solution solution("Complete review", bestPermutation, calculateTime(bestPermutation));
     return  solution;
 }
 
@@ -106,12 +104,12 @@ void transferConditionally(std::priority_queue<Task, std::vector<Task>, compareQ
 
     while(!tasksByQ.empty()){
         Task task = tasksByQ.top();
-       tasksByQ.pop();
-       if( task.getR() <= time) {
-           availableTasks.push(task);
-       }else{
-           temporary.push_back(task);
-       }
+        tasksByQ.pop();
+        if( task.getR() <= time) {
+            availableTasks.push(task);
+        }else{
+            temporary.push_back(task);
+        }
 
     }
 
@@ -134,23 +132,23 @@ Solution Problem::schrage() {
         tasksByQ.push(task);
     }
 
-   while(!tasksByQ.empty() || !availableTasks.empty()) {
-       if(!tasksByQ.empty() && permutation[0].getR() <= time ) {
-           transferConditionally(tasksByQ, availableTasks, time);
-      }
+    while(!tasksByQ.empty() || !availableTasks.empty()) {
+        if(!tasksByQ.empty() && permutation[0].getR() <= time ) {
+            transferConditionally(tasksByQ, availableTasks, time);
+        }
 
-      if(availableTasks.empty()) {
-        time = permutation[0].getR();
-      } else {
-          Task task = availableTasks.top();
-          availableTasks.pop();
-          bestPermutation.push_back(task);
-          permutation.erase(std::remove_if(permutation.begin(), permutation.end(),[&task](Task x) {return x.getIndex() == task.getIndex();}),permutation.end());
+        if(availableTasks.empty()) {
+            time = permutation[0].getR();
+        } else {
+            Task task = availableTasks.top();
+            availableTasks.pop();
+            bestPermutation.push_back(task);
+            permutation.erase(std::remove_if(permutation.begin(), permutation.end(),[&task](Task x) {return x.getIndex() == task.getIndex();}),permutation.end());
 
-          time += task.getP();
-      }
-   }
-   time = calculateTime(bestPermutation);
+            time += task.getP();
+        }
+    }
+    time = calculateTime(bestPermutation);
 
     Solution solution("Schrage", permutation, calculateTime(bestPermutation));
     return  solution;
@@ -194,10 +192,14 @@ Solution Problem::betterSchrage() {
                     endTime = time + task.getQ();
                 }
                 bestPermutation.push_back(task);
-                task = availableTasks.top();
-                availableTasks.pop();
+                if(!availableTasks.empty()) {
+                    task = availableTasks.top();
+                    availableTasks.pop();
+                }
             }
-            availableTasks.push(task);
+            if(!availableTasks.empty()) {
+                availableTasks.push(task);
+            }
 
         }
     }
@@ -223,7 +225,7 @@ Solution Problem::puzAndOwczarekMethod() {
             bestTime = calculateTime(tmpPerm);
             bestPerm=tmpPerm;
             if(tmpPerm.size() > 1){
-            std::swap(tmpPerm[tmpPerm.size() - 1 - i], tmpPerm[tmpPerm.size() - 2 - i]);}
+                std::swap(tmpPerm[tmpPerm.size() - 1 - i], tmpPerm[tmpPerm.size() - 2 - i]);}
             time = calculateTime(tmpPerm);
 
             if(bestTime < time){
@@ -236,6 +238,6 @@ Solution Problem::puzAndOwczarekMethod() {
 
     time = calculateTime(bestPerm);
 
-    Solution solution("Algorytm walsny", bestPerm, time);
+    Solution solution("Custom Algorithm", bestPerm, time);
     return solution;
 }
