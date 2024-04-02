@@ -1,4 +1,4 @@
 .idea/
-cmake-build-debug/
-cmake-build-release/
+SingleMachineProblem/cmake-build-debug/
+SingleMachineProblem/cmake-build-release/
 .vs/
