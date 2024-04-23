@@ -4,6 +4,8 @@
 #include <queue>
 #include <iostream>
 #include <functional>
+#include <cfloat>
+/*
 
 bool sortRKey ( Task task1, Task task2 ){
     return (task1.getR() < task2.getR());
@@ -242,4 +244,184 @@ Solution Problem::puzAndOwczarekMethod() {
 
     Solution solution("Custom Algorithm", bestPerm, time);
     return solution;
+}*/
+Solution Problem::LSA() {
+
+    std::vector<Task> firstMachine;
+    std::vector<Task> secondMachine;
+    std::vector<Task> allTasks = this->tasks;
+    double firstTime;
+    double secondTime;
+
+    firstMachine.push_back(allTasks[0]);
+    secondMachine.push_back(allTasks[1]);
+    firstTime = allTasks[0].getP();
+    secondTime = allTasks[1].getP();
+
+    for(int i =2; i < allTasks.size(); i++) {
+        if(firstTime <= secondTime) {
+            firstMachine.push_back(allTasks[i]);
+            firstTime += allTasks[i].getP();
+        }else {
+            secondMachine.push_back(allTasks[i]);
+            secondTime += allTasks[i].getP();
+        }
+    }
+
+    Solution solution("LSA", firstMachine, secondMachine, firstTime,secondTime);
+    return solution;
 }
+bool sortPKey ( Task task1, Task task2 ){
+    return (task1.getP() < task2.getP());
+}
+
+std::vector<Task> sortP(std::vector<Task> permutation) {
+    std::sort(permutation.begin(), permutation.end(), sortPKey);
+    return permutation;
+}
+
+Solution Problem::LPT() {
+
+    std::vector<Task> firstMachine;
+    std::vector<Task> secondMachine;
+    std::vector<Task> allTasks = this->tasks;
+    allTasks = sortP(allTasks);
+
+    double firstTime;
+    double secondTime;
+
+    firstMachine.push_back(allTasks[0]);
+    secondMachine.push_back(allTasks[1]);
+    firstTime = allTasks[0].getP();
+    secondTime = allTasks[1].getP();
+
+    for(int i =2; i < allTasks.size(); i++) {
+        if(firstTime <= secondTime) {
+            firstMachine.push_back(allTasks[i]);
+            firstTime += allTasks[i].getP();
+        }else {
+            secondMachine.push_back(allTasks[i]);
+            secondTime += allTasks[i].getP();
+        }
+    }
+
+    Solution solution("LPT", firstMachine, secondMachine, firstTime,secondTime);
+    return solution;
+}
+
+// Function to generate all binary strings
+void Problem::generateAllBinaryStrings(int n, std::vector<int> arr, int i)
+{
+
+    if (i == n) {
+        this->allCombinations.push_back(arr);
+        return;
+    }
+    arr[i] = 0;
+    generateAllBinaryStrings(n, arr, i + 1);
+
+    arr[i] = 1;
+    generateAllBinaryStrings(n, arr, i + 1);
+}
+
+Solution Problem::CompleteOverview()  {
+
+    std::vector<Task> firstMachine;
+    std::vector<Task> secondMachine;
+    std::vector<Task> allTasks = this->tasks;
+    std::vector<int> tmp;
+    tmp.resize(numberOfTasks);
+    //allTasks = sortP(allTasks);
+
+    double firstTime =0;
+    double secondTime =0;
+    double BestFirstTime = DBL_MAX;
+    double longerTime;
+
+    generateAllBinaryStrings(this->numberOfTasks, tmp, 0);
+    Solution solution("CompleteOverview", firstMachine, secondMachine, BestFirstTime, 0);
+    int counter =0;
+    for(int i = 0; i < this->allCombinations.size()/2; i++){
+        counter =0;
+        for(int j : this->allCombinations[i]){
+            if(j==0) {
+                firstTime += allTasks[counter].getP();
+                firstMachine.push_back(allTasks[counter]);
+            }
+            else {
+                secondTime += allTasks[counter].getP();
+                secondMachine.push_back(allTasks[counter]);
+            }
+            counter++;
+        }
+        longerTime = (firstTime > secondTime) ? firstTime : secondTime;
+        if(longerTime < BestFirstTime) {
+            BestFirstTime = longerTime;
+            solution.setTimeOfBestPermutationFirst(firstTime);
+            solution.setTimeOfBestPermutationSecond(secondTime);
+            solution.setRankedFirstMachine(firstMachine);
+            solution.setRankedSecondMachine(secondMachine);
+        }
+        firstTime = 0;
+        secondTime = 0;
+        firstMachine.clear();
+        secondMachine.clear();
+    }
+
+    //Solution solution("LSA", firstMachine, secondMachine, BestFirstTime, 0);
+    return solution;
+}
+
+Solution Problem::dynamicProgramming()
+{
+    int sum = 0;
+    int i, j;
+    int firstTime = 0;
+    int secondTime = 0;
+    int num = this->numberOfTasks;
+    std::vector<Task> allTasks = this->tasks;
+    std::vector<Task> firstMachine;
+    std::vector<Task> secondMachine;
+
+    for (i = 0; i < num; i++)
+        sum += (int)allTasks[i].getP();
+
+    if (sum % 2 != 0)
+        sum += 1;
+
+    bool array[num + 1][sum / 2 + 1];
+
+    for(i = 0; i <= num; i++){
+        for(j = 0; j < sum/2; j++){
+            if (j==0) array[i][j] = true;
+            else array[i][j] = false;
+        }
+    }
+
+    for(i = 1; i <= num; i++){
+        for(j = 1; j < sum/2 + 1; j++)
+            if( (array[i-1][j] == true) || ((j >= allTasks[i - 1].getP()) && (array[i - 1][ j - (int)allTasks[i - 1].getP()] == true)) ) {
+                array[i][j]=true;
+            }
+    }
+
+    j -=1;
+    while(j!=0){
+        i=0;
+        while(!array[i][j]){
+            i++;
+        }
+        firstMachine.push_back(allTasks[i - 1]);
+        firstTime +=(int)allTasks[i - 1].getP();
+        j -= (int)allTasks[i - 1].getP();
+        allTasks.erase(allTasks.begin() + i - 1);
+    }
+    secondMachine = allTasks;
+
+    for(Task task : secondMachine) secondTime += (int)task.getP();
+
+    Solution solution("Dynamic",firstMachine,secondMachine,firstTime,secondTime);
+    return solution;
+}
+
+

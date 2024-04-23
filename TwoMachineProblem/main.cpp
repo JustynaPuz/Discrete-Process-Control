@@ -9,7 +9,7 @@
 #include "inc/TestAlgorithm.h"
 
 Problem ReadFile() {
-    std::ifstream ReadFile("C:\\Users\\Justyna\\Desktop\\Discrete-Process-Control\\SingleMachineProblem\\resources\\example.txt");
+    std::ifstream ReadFile("C:\\Users\\Justyna\\Desktop\\Discrete-Process-Control\\TwoMachineProblem\\resources\\example.txt");
     if (ReadFile.is_open()) {
         int number = 0;
         std::string s = "";
@@ -59,7 +59,10 @@ int main() {
     Solution permutationBetterSchrage = problem.betterSchrage();
     std::cout << permutationBetterSchrage << std::endl;
 */
-    TestAlgorithm::test(problem);
+   // TestAlgorithm::test(problem);
+   //Solution solution = problem.LSA();
+    //Solution solution = problem.CompleteOverview();
+    Solution solution = problem.dynamicProgramming();
     return 0;
 
 }

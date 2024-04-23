@@ -1,0 +1,12 @@
+# ninja log v5
+885	1004	7355170095534645	CMakeFiles/Single.dir/src/Solution.cpp.obj	7df76eaedc9cf994
+36	885	7355170094319476	CMakeFiles/Single.dir/src/TestAlgorithm.cpp.obj	b62da73659bdd256
+22	1068	7355170096144631	CMakeFiles/Single.dir/main.cpp.obj	a2fac6e157b4070b
+7	1958	7355203581116216	CMakeFiles/Single.dir/src/Problem.cpp.obj	b196c517b2c240d
+1959	2287	7355203584384704	Single.exe	73219c621d373c3d
+9	1436	7355214834854983	CMakeFiles/Single.dir/src/Problem.cpp.obj	b196c517b2c240d
+1436	1747	7355214837972927	Single.exe	73219c621d373c3d
+7	1525	7355216836745881	CMakeFiles/Single.dir/src/Problem.cpp.obj	b196c517b2c240d
+1534	1874	7355216840233820	Single.exe	73219c621d373c3d
+7	1647	7355223127988208	CMakeFiles/Single.dir/src/Problem.cpp.obj	b196c517b2c240d
+1648	1959	7355223131098252	Single.exe	73219c621d373c3d
