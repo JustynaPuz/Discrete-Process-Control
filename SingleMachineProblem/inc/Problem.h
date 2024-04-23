@@ -2,8 +2,8 @@
 // Created by Justyna on 11.03.2024.
 //
 
-#ifndef SINGLEMACHINEPROBLEM_PROBLEM_H
-#define SINGLEMACHINEPROBLEM_PROBLEM_H
+#ifndef SINGLE_PROBLEM_H
+#define SINGLE_PROBLEM_H
 
 #include <vector>
 #include "Task.h"
@@ -30,7 +30,9 @@ public:
     Solution permutationSortR();
     Solution permutationSortQ();
     Solution schrage();
+    Solution betterSchrage();
+    Solution puzAndOwczarekMethod();
 
 };
 
-#endif //SINGLEMACHINEPROBLEM_PROBLEM_H
+#endif //SINGLE_PROBLEM_H

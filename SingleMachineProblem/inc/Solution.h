@@ -1,12 +1,13 @@
 //
-// Created by Justyna on 11.03.2024.
+// Created by Justyna on 02.04.2024.
 //
 
-#ifndef SINGLEMACHINEPROBLEM_SOLUTION_H
-#define SINGLEMACHINEPROBLEM_SOLUTION_H
+#ifndef SINGLE_SOLUTION_H
+#define SINGLE_SOLUTION_H
 
 #include <vector>
 #include <string>
+#include <iostream>
 #include "Task.h"
 
 class Solution {
@@ -20,7 +21,20 @@ public:
         this->ranked = ranked;
         this->timeOfBestPermutation = timeOfBestPermutation;
     }
+
+    friend std::ostream& operator<<(std::ostream& os, const Solution& solution) {
+        os << "Kryterium: " << solution.criterion << ", czas: " << solution.timeOfBestPermutation;
+        return os;
+    }
+
+    std::string getCriterium() {
+        return this->criterion;
+    }
+
+    double getTimeOfBestPermutation() {
+        return this->timeOfBestPermutation;
+    }
 };
 
 
-#endif //SINGLEMACHINEPROBLEM_SOLUTION_H
+#endif //SINGLE_SOLUTION_H

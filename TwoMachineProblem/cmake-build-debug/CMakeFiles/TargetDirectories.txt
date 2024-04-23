@@ -1,0 +1,3 @@
+C:/Users/Justyna/Desktop/Discrete-Process-Control/TwoMachineProblem/cmake-build-debug/CMakeFiles/Single.dir
+C:/Users/Justyna/Desktop/Discrete-Process-Control/TwoMachineProblem/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Justyna/Desktop/Discrete-Process-Control/TwoMachineProblem/cmake-build-debug/CMakeFiles/rebuild_cache.dir
