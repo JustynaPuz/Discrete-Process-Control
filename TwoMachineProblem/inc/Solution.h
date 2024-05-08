@@ -28,8 +28,8 @@ public:
 
     friend std::ostream& operator<<(std::ostream& os, const Solution& solution) {
 
-        os << "Kryterium: " << solution.criterion << ", czas pierwsz: " << solution.timeOfBestPermutationFirst ;
-        os << "Kryterium: " << solution.criterion << ", czas drugi: " << solution.timeOfBestPermutationSecond ;
+        os << "Kryterium: " << solution.criterion << ", czas pierwszy: " << solution.timeOfBestPermutationFirst ;
+        os <<  " czas drugi: " << solution.timeOfBestPermutationSecond ;
         return os;
     }
 

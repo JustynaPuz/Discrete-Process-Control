@@ -62,7 +62,9 @@ int main() {
    // TestAlgorithm::test(problem);
    //Solution solution = problem.LSA();
     //Solution solution = problem.CompleteOverview();
-    Solution solution = problem.dynamicProgramming();
+    //Solution solution = problem.dynamicProgramming();
+    TestAlgorithm::test(problem);
+
     return 0;
 
 }

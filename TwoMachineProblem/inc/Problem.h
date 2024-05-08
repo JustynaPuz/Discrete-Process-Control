@@ -40,6 +40,9 @@ public:
     Solution CompleteOverview();
     void generateAllBinaryStrings(int n, std::vector<int> arr, int i);
     Solution dynamicProgramming();
+    Solution PTAS();
+    Solution FPTAS();
+
 
 
 };

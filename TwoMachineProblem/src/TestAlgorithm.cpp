@@ -3,59 +3,50 @@
 //
 #include "../inc/TestAlgorithm.h"
 #include <chrono>
-/*
+
+
 
 void TestAlgorithm::test(Problem problem) {
-    //SORT R
+    //LSA
     auto start = std::chrono::high_resolution_clock::now();
-    Solution  permutationSortR = problem.permutationSortR();
+    Solution  permutationLSA = problem.LSA();
     auto end = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::microseconds >(end - start);
-    std::cout<< "Algorithm: " << permutationSortR.getCriterium() << " Criterion: " << permutationSortR.getTimeOfBestPermutation()<<
-             " Duration in microseconds " << duration.count() << std::endl;
+    std::cout << permutationLSA << " Czas: " << duration.count() << std::endl;;
 
-    //SORT Q
+    //LPT
     start = std::chrono::high_resolution_clock::now();
-    Solution  permutationSortQ = problem.permutationSortQ();
+    Solution  permutationLPT = problem.LPT();
     end = std::chrono::high_resolution_clock::now();
     duration = std::chrono::duration_cast<std::chrono::microseconds >(end - start);
 
-    std::cout<< "Algorithm: " << permutationSortQ.getCriterium() << " Criterion: " << permutationSortQ.getTimeOfBestPermutation()<<
-             " Duration in microseconds " << duration.count() << std::endl;
+    std::cout<< permutationLPT << " Czas: " << duration.count() << std::endl;
 
-    //all permutation
+    //Dynamic Programming
     start = std::chrono::high_resolution_clock::now();
-    Solution  allPermutation = problem.generatePermutation();
+    Solution permutationDynamic = problem.dynamicProgramming();
     end = std::chrono::high_resolution_clock::now();
     duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
 
-    std::cout<< "Algorithm: " << allPermutation.getCriterium() << " Criterion: " << allPermutation.getTimeOfBestPermutation()<<
-             " Duration in microseconds " << duration.count() << std::endl;
-    //Schrage
+    std::cout<< permutationDynamic  << " Czas: " << duration.count() << std::endl;
+
+    //PTAS
     start = std::chrono::high_resolution_clock::now();
-    Solution permutationSchrage = problem.schrage();
+    Solution permutationPTAS= problem.PTAS();
     end = std::chrono::high_resolution_clock::now();
     duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
 
-    std::cout<< "Algorithm: " << permutationSchrage.getCriterium() << " Criterion: " << permutationSchrage.getTimeOfBestPermutation()<<
-             " Duration in microseconds " << duration.count() << std::endl;
+    std::cout<< permutationPTAS << " Czas: " << duration.count() << std::endl;
 
-    //BetterSchrage
-    start = std::chrono::high_resolution_clock::now();
-    Solution permutationBetterSchrage = problem.betterSchrage();
+
+    //Complete Overview
+    /*start = std::chrono::high_resolution_clock::now();
+    Solution  allPermutation = problem.CompleteOverview();
     end = std::chrono::high_resolution_clock::now();
     duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+    std::cout<< allPermutation << " Czas: " << duration.count() << std::endl;*/
 
-    std::cout<< "Algorithm: " << permutationBetterSchrage.getCriterium() << " Criterion: " << permutationBetterSchrage.getTimeOfBestPermutation()<<
-             " Duration in microseconds " << duration.count() << std::endl;
 
-    //Own algorithm
-    start = std::chrono::high_resolution_clock::now();
-    Solution theBest = problem.puzAndOwczarekMethod();
-    end = std::chrono::high_resolution_clock::now();
-    duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
 
-    std::cout<< "Algorithm: " << theBest.getCriterium() << " Criterion: " << theBest.getTimeOfBestPermutation()<<
-             " Duration in microseconds " << duration.count() << std::endl;
 }
-*/
+
