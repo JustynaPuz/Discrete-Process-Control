@@ -16,7 +16,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "cmake-build-release/CMakeFiles/3.27.8/CMakeSystem.cmake"
+			"path" : "cmake-build-default/CMakeFiles/3.27.8/CMakeSystem.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -275,7 +275,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "cmake-build-release/CMakeFiles/3.27.8/CMakeCCompiler.cmake"
+			"path" : "cmake-build-default/CMakeFiles/3.27.8/CMakeCCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -519,7 +519,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "cmake-build-release/CMakeFiles/3.27.8/CMakeCXXCompiler.cmake"
+			"path" : "cmake-build-default/CMakeFiles/3.27.8/CMakeCXXCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -593,7 +593,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "cmake-build-release/CMakeFiles/3.27.8/CMakeRCCompiler.cmake"
+			"path" : "cmake-build-default/CMakeFiles/3.27.8/CMakeRCCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -672,7 +672,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "cmake-build-release/CMakeFiles/3.27.8/CMakeCCompiler.cmake"
+			"path" : "cmake-build-default/CMakeFiles/3.27.8/CMakeCCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -771,7 +771,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "cmake-build-release/CMakeFiles/3.27.8/CMakeCXXCompiler.cmake"
+			"path" : "cmake-build-default/CMakeFiles/3.27.8/CMakeCXXCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -782,8 +782,8 @@
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "C:/Users/Justyna/Desktop/Discrete-Process-Control/SingleMachineProblem/cmake-build-release",
-		"source" : "C:/Users/Justyna/Desktop/Discrete-Process-Control/SingleMachineProblem"
+		"build" : "C:/Users/Justyna/Desktop/Discrete-Process-Control/TwoMachineProblem/cmake-build-default",
+		"source" : "C:/Users/Justyna/Desktop/Discrete-Process-Control/TwoMachineProblem"
 	},
 	"version" : 
 	{

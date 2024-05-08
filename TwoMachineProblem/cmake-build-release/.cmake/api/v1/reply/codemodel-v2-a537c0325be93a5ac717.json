@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/Justyna/Desktop/Discrete-Process-Control/SingleMachineProblem/cmake-build-release",
-		"source" : "C:/Users/Justyna/Desktop/Discrete-Process-Control/SingleMachineProblem"
+		"build" : "C:/Users/Justyna/Desktop/Discrete-Process-Control/TwoMachineProblem/cmake-build-release",
+		"source" : "C:/Users/Justyna/Desktop/Discrete-Process-Control/TwoMachineProblem"
 	},
 	"version" : 
 	{
