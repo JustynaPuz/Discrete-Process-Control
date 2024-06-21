@@ -1,0 +1,14 @@
+# ninja log v5
+7	1106	7406933302525073	CMakeFiles/Flowshop2.dir/main.cpp.obj	67402c7b652e96e1
+1265	1684	7406943853895537	Flowshop2.exe	741b4b0f815def16
+7	1264	7406943849747384	CMakeFiles/Flowshop2.dir/src/Problem.cpp.obj	d029d0b28a862f37
+0	16	0	clean	fa1f7e077cba2515
+5	1176	7406955826594524	CMakeFiles/Flowshop2.dir/main.cpp.obj	67402c7b652e96e1
+4	1385	7406956440213907	CMakeFiles/Flowshop2.dir/main.cpp.obj	67402c7b652e96e1
+33	1564	7406956441294244	CMakeFiles/Flowshop2.dir/src/TestAlgorithm.cpp.obj	60587c808cf4c890
+21	1820	7406956444689203	CMakeFiles/Flowshop2.dir/src/Problem.cpp.obj	d029d0b28a862f37
+1820	2269	7406956449174363	Flowshop2.exe	417a24e30930ee25
+21	1507	7406957159851291	CMakeFiles/Flowshop2.dir/src/TestAlgorithm.cpp.obj	60587c808cf4c890
+6	1545	7406957160241294	CMakeFiles/Flowshop2.dir/main.cpp.obj	67402c7b652e96e1
+32	1708	7406957161854160	CMakeFiles/Flowshop2.dir/src/Problem.cpp.obj	d029d0b28a862f37
+1708	2186	7406957166404405	Flowshop2.exe	417a24e30930ee25
